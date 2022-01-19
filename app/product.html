@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+    integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="./Css/style.css" />
+  <link rel="stylesheet" href="./Css/responsive.css" />
+</head>
+
+<body>
+  <div class="product-container">
+    <div class="container">
+      <!-- Start Header -->
+      <header>
+        <div class="container">
+          <div class="header-top">
+            <a href="index.html" class="img-top">
+              <img src="./Img/Kyle/Thiết kế không tên.png" alt="" /></a>
+            <ul class="header-nav">
+              <li><a href="index.html">Trang chủ</a></li>
+              <li class="products-dropdown">
+                <a href="product.html">Sản phẩm</a>
+                <ul class="dropdown">
+                  <!-- <li><a href="#">Áo</a></li>
+                  <li><a href="#">Váy</a></li>
+                  <li><a href="#">Đầm</a></li>
+                  <li><a href="#">Quần</a></li> -->
+                </ul>
+              </li>
+              <li><a href="#">Giới thiệu</a></li>
+              <li><a href="form.html">Đăng nhập/Đăng ký</a></li>
+              <li class="header-search">
+                <a href="#" id="header-search">
+                  <ion-icon name="search-outline"></ion-icon>
+                </a>
+                <div class="search-container">
+                  <ul class="search-box">
+                    <li class="search-item">
+                      <form action="" method="post" class="search-form">
+                        <div class="search-input">
+                          <input type="text" placeholder="Tìm kiếm..." />
+                        </div>
+                        <div class="search-icon">
+                          <a href="#" class="icon">
+                            <ion-icon name="search-outline"></ion-icon>
+                          </a>
+                        </div>
+                      </form>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <a href="cart.html">
+                  <ion-icon name="cart-outline"></ion-icon>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <!-- End header -->
+
+      <!-- Responsive Header -->
+      <div class="responsive-header">
+        <div class="header-item">
+          <a id="hamburger" href="#">
+            <ion-icon name="menu-outline"></ion-icon>
+          </a>
+        </div>
+        <div class="header-item header-top">
+          <a href="index.html" class="img-top">
+            <img src="./Img/Kyle/Thiết kế không tên.png" alt="" /></a>
+        </div>
+        <div class="header-item">
+          <a href="#">
+            <ion-icon name="cart-outline"></ion-icon>
+          </a>
+        </div>
+      </div>
+      <!-- End Responsive Header -->
+
+      <!-- Filter product -->
+      <div class="filter">
+        <div class="filter-item">Lọc</div>
+        <div class="filter-item">
+          <div class="filter-order">
+            <p>Sắp xếp theo:</p>
+            <div class="filter-orderby">
+              <div class="filter-orderby-item">
+                <p>Sản phẩm nổi bật</p>
+                <p>
+                  <a href="#" id="filter-dropdown">
+                    <ion-icon name="caret-down-outline"></ion-icon>
+                  </a>
+                </p>
+              </div>
+            </div>
+            <div class="filter-select">
+              <ul>
+                <li>Sản phẩm nổi bật</li>
+                <li>Giá: Tăng dần</li>
+                <li>Giá: Giảm dần</li>
+                <li>Tên: A-Z</li>
+                <li>Tên: Z-A</li>
+                <li>Cũ nhất</li>
+                <li>Mới nhất</li>
+                <li>Bán chạy nhất</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Products -->
+      <div class="product-box">
+        <div class="product-list-row">
+
+          <!-- <div class="product-item">
+            <div class="image">
+              <a href="#"><img src="./Img/gina-dress.png" alt="" /></a>
+            </div>
+            <div class="products-action">
+              <h2><a href="#">Gina dress</a></h2>
+              <div class="product-price">
+                <p>280,000₫</p>
+              </div>
+              <span class="product-buy-btn">Mua ngay</span>
+            </div>
+          </div> -->
+
+        </div>
+      </div>
+      <!-- Pagniation -->
+      <div class="paging">
+        <ul class="product-pagination">
+          <li>
+            <a href="#" id="pagniation">
+              <ion-icon name="chevron-back-outline"></ion-icon>
+            </a>
+          </li>
+          <li><a href="#" id="pagniation" class="pagniation-active">1</a></li>
+          <li><a href="#" id="pagniation">2</a></li>
+          <li><a href="#" id="pagniation">3</a></li>
+          <li>
+            <a href="#" id="pagniation">
+              <ion-icon name="chevron-forward-outline"></ion-icon>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- Start inbox -->
+      <div class="email-contact">
+        <div class="container">
+          <div class="contact-box">
+            <div class="tittle-main">
+              <h3>treat your inbox</h3>
+            </div>
+            <div class="email-box">
+              <p>Nhập địa chỉ email của bạn để nhận được tin tức mới nhất</p>
+              <form method="post">
+                <input type="text" placeholder="Nhập email của bạn..." />
+                <button class="btn btn-reg" type="submit">Đăng ký</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End inbox -->
+
+    </div>
+    <!-- Start footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-box">
+          <div class="footer-item">
+            <div class="footer-tittle">
+              <h2>Thông tin</h2>
+            </div>
+            <ul class="link-widget">
+              <li><a href="">Tìm kiếm</a></li>
+              <li><a href="">Giới thiệu</a></li>
+              <li><a href="">Hệ thống cửa hàng</a></li>
+            </ul>
+          </div>
+          <div class="footer-item">
+            <div class="footer-tittle">
+              <h2>Sản phẩm</h2>
+            </div>
+            <ul class="link-widget">
+              <li><a href="">Áo</a></li>
+              <li><a href="">Váy</a></li>
+              <li><a href="">Đầm</a></li>
+              <li><a href="">Quần</a></li>
+              <li><a href="">Best seller</a></li>
+            </ul>
+          </div>
+          <div class="footer-item">
+            <div class="footer-tittle">
+              <h2>Chính sách</h2>
+            </div>
+            <ul class="link-widget">
+              <li><a href="">Chính sách và quy định chung</a></li>
+              <li><a href="">Hướng dẫn mua hàng</a></li>
+              <li><a href="">Hướng dẫn thanh toán</a></li>
+              <li><a href="">Chính sách vận chuyển</a></li>
+              <li><a href="">Chính sách đổi hàng</a></li>
+              <li><a href="">Chính sách bảo mật</a></li>
+              <li><a href="">Kiểm tra đơn hàng</a></li>
+            </ul>
+          </div>
+          <div class="footer-item">
+            <div class="footer-tittle">
+              <h2>Khác</h2>
+            </div>
+            <ul class="link-widget">
+              <li><a href="">Blog</a></li>
+              <li><a href="">Liên hệ</a></li>
+              <li><a href="">Tuyển dụng</a></li>
+            </ul>
+          </div>
+        </div>
+        <!-- End foote-box -->
+        <div class="footer-box">
+          <div class="footer-item">
+            <div class="footer-tittle">
+              <img src="./Img/Kyle/Kyle-logos6.jpeg" alt="" />
+            </div>
+          </div>
+          <div class="footer-item">
+            <div class="footer-info">
+              <div class="icon">
+                <ion-icon name="home"></ion-icon>
+              </div>
+              <p>
+                CÔNG TY TNHH WILEY Địa chỉ : 2252/22C Quốc lộ 1A, Tổ 1, Khu
+                phố 1, P.Tân Chánh Hiệp, Quận 12 Copyright © 2002 Kyle
+              </p>
+            </div>
+          </div>
+          <div class="footer-item">
+            <div class="footer-info">
+              <div class="icon">
+                <ion-icon name="mail"></ion-icon>
+              </div>
+              <p>levinhky1202@gmail.com</p>
+            </div>
+          </div>
+          <div class="footer-item">
+            <div class="footer-info">
+              <div class="icon">
+                <ion-icon name="call"></ion-icon>
+              </div>
+              <p>0989788749</p>
+            </div>
+          </div>
+        </div>
+        <!-- End footer-box -->
+        <div class="footer-box">
+          <div class="container">
+            <div class="payments-image tittle-main">
+              <img src="./Img/payment-icon.png" alt="" />
+            </div>
+            <div class="link-widget tittle-main footer-menu">
+              <ul>
+                <li><a href="">Tìm kiếm</a></li>
+                <li><a href="">Giới thiệu</a></li>
+                <li><a href="">Hệ thống cửa hàng</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- End footer -->
+    <div class="alert hide">
+      <span class="fas fa-exclamation-circle"></span>
+      <span class="msg">Thêm sản phẩm thành công!</span>
+      <div class="close-btn">
+        <ion-icon name="close-outline"></ion-icon>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script src="./Js/product-api.js"></script>
+  <script src="./Js/categories-api.js"></script>
+
+  <script>
+    const filterDropdown = document.getElementById("filter-dropdown");
+    const filterSelect = document.querySelector(".filter-select");
+    filterDropdown.addEventListener("click", function () {
+      filterSelect.classList.toggle("active");
+    });
+
+    const productsApi = 'http://localhost:3000/products';
+
+    // Hiển thị trang chi tiết sản phẩm
+    function renderProductDetail(id) {
+      fetch(productsApi + '/' + id)
+        .then(res => res.json())
+        .then(item => {
+          let productDetail = localStorage.setItem('productDetail', JSON.stringify(item));
+          window.location = 'productdetail.html';
+        })
+    };
+
+    // Thêm sản phẩm vào giỏ hàng
+    document.querySelector('.close-btn').onclick = () => {
+      alert.classList.remove('show');
+      alert.classList.add('hide');
+    }
+    let alert = document.querySelector('.alert');
+
+    function addToCart(id, name, image, price) {
+      alert.classList.add('show');
+      alert.classList.remove('hide');
+      alert.classList.add('showAlert');
+
+      setTimeout(function () {
+        alert.classList.remove('show');
+        alert.classList.add('hide')
+      }, 100);
+
+      let cart = JSON.parse(localStorage.getItem('cart'));
+      if (cart == null) {
+        cart = [];
+        // Thêm value vào mảng cart
+        cart.push({ id, name, image, price, quatity: 1 });
+      } else {
+        // Tìm id của product mới thêm vào bằng với id api
+        let item = cart.find(product => product.id == id);
+        // Nếu tìm ra tăng số lượng lên còn không thì thêm value vào mảng cart
+        item ? item.quatity++ : cart.push({ id, name, image, price, quatity: 1 });
+      }
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+
+  </script>
+
+</body>
+
+</html>

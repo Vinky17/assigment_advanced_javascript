@@ -1,0 +1,60 @@
+/* Ipad */
+@media only screen and (min-width: 767px) and (max-width: 1200px) {
+  .shipping__right {
+    display: none;
+  }
+
+  .payment__left,
+  .shipping__left {
+    width: 100%;
+    flex-basis: 100%;
+    padding: 0;
+  }
+
+  .container {
+    width: 500px;
+  }
+
+  .breadcrumb {
+    display: none;
+  }
+
+  .shipping__content {
+    margin-top: 20%;
+  }
+
+  .section__fieldset__input input {
+    width: 95%;
+  }
+
+  .show {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .show__order {
+    display: block;
+    background: #fafafa;
+    padding: 20px;
+  }
+
+  .show__order .show span {
+    padding-left: 5px;
+    font-size: 14px;
+  }
+
+  .shipping__active {
+    display: block;
+  }
+
+  .order__summary {
+    font-size: 12px;
+    position: relative;
+  }
+
+  .order__summary__table .thumbnail {
+    right: 72%;
+    top: 30px;
+  }
+}

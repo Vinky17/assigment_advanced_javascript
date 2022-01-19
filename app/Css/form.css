@@ -1,0 +1,120 @@
+:root {
+  --light-gray: #666666;
+}
+
+.form-container {
+  margin-top: 10%;
+}
+
+.social-login {
+  text-align: center;
+  padding: 50px 0px;
+}
+
+.social-login h5 {
+  text-transform: uppercase;
+  color: var(--light-gray);
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.social-login button {
+  margin: 0 5px;
+  padding-right: 10px;
+  text-indent: 30px;
+  line-height: 24px;
+  border-radius: 12px;
+  color: #fff;
+  border: none;
+  outline: none;
+}
+
+.fb-login {
+  background: #546ea6;
+}
+
+.gg-login {
+  background: #df5656;
+}
+
+.line {
+  width: 100%;
+  border-bottom: 1px solid #dfdf;
+  position: relative;
+}
+
+.line > span {
+  position: absolute;
+  left: 50%;
+  top: -7px;
+  transform: translateX(-50%);
+  background: #fff;
+  color: var(--light-gray);
+  padding: 0 5px;
+  font-size: 14px;
+}
+
+.log_reg {
+  margin-top: 50px;
+}
+
+.log_reg_box {
+  display: flex;
+}
+
+.register,
+.login {
+  flex: 1;
+}
+
+form .tittle-main h4 {
+  color: var(--light-gray);
+  font-size: 20px;
+  text-transform: uppercase;
+  margin: 20px 0;
+}
+
+.log_reg_row {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 50px;
+}
+
+.log_reg_row input {
+  border: 0;
+  outline: none;
+  width: 100%;
+  padding: 0 10px;
+  margin-bottom: 15px;
+  height: 40px;
+  color: var(--light-gray);
+  background: #f2f2f2;
+  font-size: 13px;
+  border-radius: 5px;
+}
+
+.log_reg_row button {
+  padding: 10px;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid #ccc;
+}
+
+.log_reg_row button:hover {
+  background: #000;
+  color: #fff;
+}
+
+.forgot a {
+  font-size: 13px;
+  text-decoration: underline;
+  color: var(--light-gray);
+}
+
+.forgot {
+  margin-top: 20px;
+}

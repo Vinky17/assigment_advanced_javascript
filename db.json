@@ -1,0 +1,91 @@
+{
+  "categoies": [
+    {
+      "id": 1,
+      "name": "Đầm"
+    },
+    {
+      "id": 2,
+      "name": "Áo"
+    },
+    {
+      "id": 3,
+      "name": "Váy"
+    },
+    {
+      "id": 4,
+      "name": "Quần"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Gigi Dress",
+      "image": "https://product.hstatic.net/1000370235/product/facetune_10-01-2022-15-55-22_0be74b4c8de5427e99edd87c71d0d0c2_grande.jpg",
+      "price": 590000,
+      "category_id": 1
+    },
+    {
+      "id": 2,
+      "name": "Dona Top",
+      "image": "https://product.hstatic.net/1000370235/product/sbs2216_fc8006db35a54f228db7ffd9bbc6ca8a_grande.jpg",
+      "price": 199000,
+      "category_id": 2
+    },
+    {
+      "id": 3,
+      "name": "Kyla Jeans",
+      "image": "https://product.hstatic.net/1000370235/product/sbs2026_ebad2615c43a4e4fa951a0f57464b8d5_grande.jpg",
+      "price": 288000,
+      "category_id": 4
+    },
+    {
+      "name": "Kayla Skirt",
+      "image": "https://product.hstatic.net/1000370235/product/sbsc105226_18fd0377d9504bc389ee1a7e13038b1b_grande.jpg",
+      "price": "294000",
+      "category_id": 3,
+      "id": 4
+    },
+    {
+      "name": "Evelyn Top",
+      "image": "https://product.hstatic.net/1000370235/product/sbs62613_ad55332bf1da44c09dee0019a57a98ab_grande.jpg",
+      "price": "208000",
+      "category_id": 2,
+      "id": 5
+    },
+    {
+      "name": "Monica Dress",
+      "image": "https://product.hstatic.net/1000370235/product/facetune_08-01-2022-15-03-11_ae9ccb7a4ca14460917fe9ada515f5db_grande.jpg",
+      "price": "590000",
+      "category_id": 1,
+      "id": 6
+    },
+    {
+      "name": "Yuri Dress",
+      "image": "https://product.hstatic.net/1000370235/product/sbs0962_e0680d2e2fd64a74bf5333c0a11c235b_grande.jpg",
+      "price": "288000",
+      "category_id": 1,
+      "id": 7
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "customer_name": "Kyle",
+      "customer_address": "Vietnam",
+      "customer_email": "kyle@gmail.com",
+      "customer_phone": "0989788749",
+      "create_date": "14-02-2019",
+      "status": "shipped"
+    }
+  ],
+  "order_detail": [
+    {
+      "id": 1,
+      "order_id": 1,
+      "product_id": 2,
+      "quantity": 1,
+      "unti_price": 199000
+    }
+  ]
+}
