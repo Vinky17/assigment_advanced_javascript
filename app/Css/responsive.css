@@ -4,6 +4,10 @@
     overflow: hidden;
   }
 
+  .product-container {
+    margin-top: 20%;
+  }
+
   .container {
     width: 800px;
     padding-right: 15px;
@@ -84,6 +88,10 @@
 @media only screen and (min-width: 200px) and (max-width: 600px) {
   .header-top img {
     height: 50px;
+  }
+
+  .product-container {
+    margin-top: 20%;
   }
 
   .container {

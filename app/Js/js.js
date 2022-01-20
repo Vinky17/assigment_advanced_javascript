@@ -44,36 +44,6 @@ function showSlides() {
   setTimeout(showSlides, 3000);
 }
 
-//  Menu search nav
-const headerSearch = document.querySelector("#header-search");
-const searchContainer = document.querySelector(".search-container");
-headerSearch.addEventListener("click", function () {
-  searchContainer.classList.toggle("search-active");
-  searchContainer.preventDefault();
-});
-
-const mobileDropdown = document.querySelector("#mobile-dropdown");
-const mobileDropdownItem = document.querySelector(".dropdown-responsive");
-mobileDropdown.addEventListener("click", function () {
-  mobileDropdownItem.classList.toggle("dropdown-active");
-});
-
-const hamburgerButton = document.querySelector("#hamburger");
-const overlay = document.querySelector(".overlay");
-const menuSidebar = document.querySelector("#menu-sidebar");
-
-hamburgerButton.addEventListener("click", function () {
-  overlay.classList.add("active-overlay");
-  menuSidebar.classList.add("active-sidebar");
-});
-overlay.addEventListener("click", function () {
-  overlay.classList.remove("active-overlay");
-  menuSidebar.classList.remove("active-sidebar");
-});
-menuSidebar.addEventListener("click", function (e) {
-  e.stopPropagation();
-});
-
 // Filter product
 // const filterDropdown = document.getElementById("filter-dropdown");
 // const filterSelect = document.querySelector(".filter-select");

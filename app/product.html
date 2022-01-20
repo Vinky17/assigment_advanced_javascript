@@ -33,7 +33,7 @@
                   <li><a href="#">Quần</a></li> -->
                 </ul>
               </li>
-              <li><a href="#">Giới thiệu</a></li>
+              <li><a href="intro.html">Giới thiệu</a></li>
               <li><a href="form.html">Đăng nhập/Đăng ký</a></li>
               <li class="header-search">
                 <a href="#" id="header-search">
@@ -42,16 +42,16 @@
                 <div class="search-container">
                   <ul class="search-box">
                     <li class="search-item">
-                      <form action="" method="post" class="search-form">
+                      <divs class="search-form">
                         <div class="search-input">
-                          <input type="text" placeholder="Tìm kiếm..." />
+                          <input id="search-input" type="text" placeholder="Tìm kiếm..." />
                         </div>
                         <div class="search-icon">
                           <a href="#" class="icon">
                             <ion-icon name="search-outline"></ion-icon>
                           </a>
                         </div>
-                      </form>
+                      </divs>
                     </li>
                   </ul>
                 </div>
@@ -79,7 +79,7 @@
             <img src="./Img/Kyle/Thiết kế không tên.png" alt="" /></a>
         </div>
         <div class="header-item">
-          <a href="#">
+          <a href="cart.html">
             <ion-icon name="cart-outline"></ion-icon>
           </a>
         </div>
@@ -279,6 +279,34 @@
       </div>
     </footer>
     <!-- End footer -->
+    <div class="overlay">
+      <div class="overlay-header-container">
+        <div class="overlay-header-box">
+          <ul id="menu-sidebar">
+            <li>
+              <form method="post" action="">
+                <div class="search-small">
+                  <input type="text" placeholder="Tìm kiếm..." />
+                  <button>
+                    <ion-icon name="search-outline"></ion-icon>
+                  </button>
+                </div>
+              </form>
+            </li>
+            <li><a href="index.html">Trang chủ</a></li>
+            <li>
+              <a href="product.html">Sản phẩm </a><a id="mobile-dropdown">
+                <ion-icon name="chevron-down-outline"></ion-icon>
+              </a>
+              <ul class="dropdown-responsive">
+              </ul>
+            </li>
+            <li><a href="intro.html">Giới thiệu</a></li>
+            <li><a href="form.html">Đăng nhập/Đăng ký</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
     <div class="alert hide">
       <span class="fas fa-exclamation-circle"></span>
       <span class="msg">Thêm sản phẩm thành công!</span>
@@ -288,7 +316,6 @@
     </div>
   </div>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script src="./Js/product-api.js"></script>
   <script src="./Js/categories-api.js"></script>
 
   <script>
@@ -339,6 +366,89 @@
         item ? item.quatity++ : cart.push({ id, name, image, price, quatity: 1 });
       }
       localStorage.setItem('cart', JSON.stringify(cart));
+    }
+
+    getProducts(renderProducts);
+
+    // API lấy danh sách sản phẩm
+    function getProducts(products) {
+      fetch(productsApi)
+        .then(res => res.json())
+        .then(products)
+    }
+
+    // Hiển thị danh sách sản phẩm
+    function renderProducts(products) {
+      const productBlock = document.querySelector('.product-list-row');
+
+      const productItem = products.map((product) => {
+        return `
+    <div class="product-item">
+    <div class="image">
+      <a onclick="renderProductDetail(${product.id})"><img src="${product.image}" alt="" /></a>
+    </div>
+    <div class="products-action">
+      <h2><a href="${product.id}">${product.name}</a></h2>
+      <div class="product-price">
+        <p>${product.price}₫</p>
+      </div>
+      <span onclick="addToCart(${product.id},'${product.name}','${product.image}',${product.price})" class="product-buy-btn">
+      Mua ngay
+      </span>
+    </div>
+  </div>
+    `;
+      })
+      productBlock.innerHTML = productItem.join('');
+    }
+
+    // Hiển thị sản phẩm theo loại
+    let params = new URLSearchParams(location.search);
+    let id = params.get('id');
+    let productByIdApi = `http://localhost:3000/products?category_id=${id}`;
+    function renderProductsById() {
+      fetch(productByIdApi)
+        .then(res => res.json())
+        .then((products) => {
+          if (id == null) getProducts(renderProducts);
+          renderProducts(products);
+
+        })
+    }
+    renderProductsById();
+
+    // Tìm kiếm sản phẩm
+    const searchButton = document.querySelector('.search-icon');
+
+    searchButton.onclick = () => {
+      let searchInputValue = document.querySelector('#search-input').value;
+      let searchProductApi = `http://localhost:3000/products?q=${searchInputValue}`;
+
+      renderSearchProduct(searchProductApi);
+    }
+
+    window.addEventListener('keydown', (event) => {
+      if (event.code === 'Enter') {
+        let searchInputValue = document.querySelector('#search-input').value;
+        let searchProductApi = `http://localhost:3000/products?q=${searchInputValue}`;
+
+        renderSearchProduct(searchProductApi);
+      }
+    });
+
+    const productBox = document.querySelector('.product-box');
+    function renderSearchProduct(searchProductApi) {
+      fetch(searchProductApi)
+        .then(res => res.json())
+        .then((products) => {
+          if (products.length === 0) {
+            productBox.innerHTML = `<h1>Không tìm thấy sản phẩm</h1>`;
+            console.log(productBox);
+          } else if (products.length > 0) {
+            renderProducts(products);
+          }
+
+        })
     }
 
   </script>

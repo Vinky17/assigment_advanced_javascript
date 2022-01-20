@@ -66,6 +66,13 @@
       "price": "288000",
       "category_id": 1,
       "id": 7
+    },
+    {
+      "name": "Kori Skirt",
+      "image": "https://product.hstatic.net/1000370235/product/sbs2104_e1fb6b69d8e74a0787b3809f99c8c7c1_grande.jpg",
+      "price": "209000",
+      "category_id": 3,
+      "id": 8
     }
   ],
   "orders": [

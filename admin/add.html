@@ -101,81 +101,71 @@
   </div>
   <section class="home-section">
     <div class="text">Danh sách sản phẩm</div>
-    <table class="product-list">
-      <tr class="product-list-item1">
-        <td>Ảnh</td>
-        <td>Tên</td>
-        <td>Giá</td>
-        <td>Loại sản phẩm</td>
-        <td></td>
-      </tr>
-      <tr class="product-list-item2">
-        <!-- <td class="product-list-item-img">
-          <img src="../app/Img/model2.png" alt="">
-        </td>
-        <td class="product-list-item-name">
-          Evelyn top
-        </td>
-        <td class="product-list-item-price">
-          250000
-        </td>
-        <td class="product-list-item-category">
-          Váy
-        </td>
-        <td class="product-list-action">
-          <a href="index.html">Thêm</a>
-          <a href="">Xóa</a>
-          <a href="">Sửa</a>
-        </td> -->
-      </tr>
-    </table>
+    <div class="wrapper">
+      <header>Thêm sản phẩm</header>
+      <div class="form">
+        <div class="dbl-field">
+          <div class="field">
+            <input type="text" name="name" placeholder="Tên sản phẩm">
+            <i class='fas fa-user'></i>
+          </div>
+          <div class="field">
+            <input type="text" name="image" placeholder="Hình ảnh sản phẩm">
+            <i class='fas fa-envelope'></i>
+          </div>
+        </div>
+        <div class="dbl-field">
+          <div class="field">
+            <input type="text" name="price" placeholder="Giá sản phẩm">
+            <i class='fas fa-phone-alt'></i>
+          </div>
+          <div class="field">
+            <select id="category_id" name="category_id">
+            </select>
+          </div>
+        </div>
+        <div class="button-area">
+          <button id="createProduct">Thêm sản phẩm</button>
+        </div>
+      </div>
+    </div>
   </section>
+  <script src="./js/category.js"></script>
   <script>
-
     const productApi = 'http://localhost:3000/products';
+    function handleCreateProduct() {
+      const createBtn = document.getElementById('createProduct');
 
-    function renderProducts() {
-      fetch(productApi)
-        .then(res => res.json())
-        .then(products => {
-          const productListsBlock = document.querySelector(".product-list-item2");
+      createBtn.onclick = function () {
+        const nameValue = document.querySelector('input[name="name"]').value;
+        const imageValue = document.querySelector('input[name="image"]').value;
+        const priceValue = document.querySelector('input[name="price"]').value;
+        const categoryValue = document.querySelector('select[name="category_id"]').value;
 
-          const productListsItem = products.map((product => {
-            return `
-                <td class="product-list-item-img">
-              <img src="${product.image}" alt="">
-            </td>
-            <td class="product-list-item-name">
-              ${product.name}
-            </td>
-            <td class="product-list-item-price">
-              ${product.price}
-            </td>
-            <td class="product-list-item-category">
-              ${product.category_id}
-            </td>
-            <td class="product-list-action">
-              <a href="add.html">Thêm</a>
-              <a href="update.html?id=${product.id}">Sửa</a>
-              <strong onclick="handleDeleteProduct(${product.id})">Xóa</strong>
-            </td> `;
-          }))
-          productListsBlock.innerHTML = productListsItem.join('');
-        })
+        const formData = { name: nameValue, image: imageValue, price: priceValue, category_id: parseInt(categoryValue) };
+
+        createProduct(formData);
+        alert('Thêm sản phẩm thành công');
+      }
     }
 
-    function handleDeleteProduct(id) {
-      fetch(productApi + '/' + id, {
-        method: 'DELETE',
+    function createProduct(data, products) {
+      fetch(productApi, {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
+        body: JSON.stringify(data)
       })
-        .then(res => res.json());
+        .then(res => res.json())
+        .then(products)
     }
 
-    renderProducts();
+    handleCreateProduct();
 
+
+  </script>
+  <script>
     let sidebar = document.querySelector(".sidebar");
     let closeBtn = document.querySelector("#btn");
     let searchBtn = document.querySelector(".bx-search");
@@ -198,7 +188,6 @@
         closeBtn.classList.replace("bx-menu-alt-right", "bx-menu");//replacing the iocns class
       }
     }
-
   </script>
 </body>
 

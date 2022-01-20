@@ -29,24 +29,6 @@ document.addEventListener("DOMContentLoaded", function () {
       </td>
     </tr> `;
 
-      //   document.querySelector('.cart__right').innerHTML = ` 
-      //  <div class="cart__caculate">
-      //   <div class="cart__total">
-      //     <div class="cart__total__top">
-      //       <p>Tổng tiền</p>
-      //       <p id="total">280.000vnđ</p>
-      //     </div>
-      //     <div class="cart__total__final">
-      //       <a href="#" class="update-cart">Thanh toán</a>
-      //     </div>
-      //   </div>
-      //   <div class="cart_note">
-      //     <div class="cart__note__item">
-      //       <label for="">Ghi chú</label>
-      //       <textarea name="" id="" cols="30" placeholder="Bạn muốn mô tả rõ hơn về đơn hàng..."></textarea>
-      //     </div>
-      //   </div>
-      // </div> `;
       myCart.innerHTML += cartItem;
 
       total();

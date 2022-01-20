@@ -80,21 +80,22 @@ header {
   list-style: none;
   position: absolute;
   top: 100%;
-  min-width: 150px;
+  min-width: 200px;
   -webkit-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.3s ease-in-out;
   z-index: 99;
   margin-top: 10px;
+  padding: 0;
   opacity: 0;
   visibility: hidden;
   background-color: rgba(0, 0, 0, 0.75);
 }
 
 .dropdown li {
-  padding: 16px 0;
   border-bottom: 1px solid #99999999;
   margin-left: 0;
   cursor: pointer;
+  transition: all 0.2s linear;
 }
 
 .dropdown li:hover {
@@ -102,12 +103,14 @@ header {
 }
 
 .dropdown li a {
-  font-size: 12px;
-  margin-left: 10px;
+  font-size: 13px;
+  padding: 16px;
+  display: block;
 }
 
 .products-dropdown {
   position: relative;
+  transition: all 0.2s linear;
 }
 
 .products-dropdown:hover .dropdown {
