@@ -266,7 +266,7 @@ strong {
 
 .product-list-item2 {
   display: flex;
-  width: 555px;
+  width: 550px;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-evenly;

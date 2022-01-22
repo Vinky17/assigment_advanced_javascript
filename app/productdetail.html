@@ -24,12 +24,12 @@
                 <a href="product.html">Sản phẩm</a>
                 <ul class="dropdown">
                   <!-- <li><a href="#">Áo</a></li>
-                  <li><a href="#">Váy</a></li>
-                  <li><a href="#">Đầm</a></li>
-                  <li><a href="#">Quần</a></li> -->
+                <li><a href="#">Váy</a></li>
+                <li><a href="#">Đầm</a></li>
+                <li><a href="#">Quần</a></li> -->
                 </ul>
               </li>
-              <li><a href="#">Giới thiệu</a></li>
+              <li><a href="intro.html">Giới thiệu</a></li>
               <li><a href="form.html">Đăng nhập/Đăng ký</a></li>
               <li class="header-search">
                 <a href="#" id="header-search">
@@ -38,16 +38,16 @@
                 <div class="search-container">
                   <ul class="search-box">
                     <li class="search-item">
-                      <form action="" method="post" class="search-form">
+                      <divs class="search-form">
                         <div class="search-input">
-                          <input type="text" placeholder="Tìm kiếm..." />
+                          <input id="search-input" type="text" placeholder="Tìm kiếm..." />
                         </div>
                         <div class="search-icon">
                           <a href="#" class="icon">
                             <ion-icon name="search-outline"></ion-icon>
                           </a>
                         </div>
-                      </form>
+                      </divs>
                     </li>
                   </ul>
                 </div>
@@ -75,7 +75,7 @@
             <img src="./Img/Kyle/Thiết kế không tên.png" alt="" /></a>
         </div>
         <div class="header-item">
-          <a href="#">
+          <a href="cart.html">
             <ion-icon name="cart-outline"></ion-icon>
           </a>
         </div>
@@ -213,6 +213,34 @@
       </div>
     </footer>
     <!-- End footer -->
+    <div class="overlay">
+      <div class="overlay-header-container">
+        <div class="overlay-header-box">
+          <ul id="menu-sidebar">
+            <li>
+              <form method="post" action="">
+                <div class="search-small">
+                  <input type="text" placeholder="Tìm kiếm..." />
+                  <button>
+                    <ion-icon name="search-outline"></ion-icon>
+                  </button>
+                </div>
+              </form>
+            </li>
+            <li><a href="index.html">Trang chủ</a></li>
+            <li>
+              <a href="product.html">Sản phẩm </a><a id="mobile-dropdown">
+                <ion-icon name="chevron-down-outline"></ion-icon>
+              </a>
+              <ul class="dropdown-responsive">
+              </ul>
+            </li>
+            <li><a href="intro.html">Giới thiệu</a></li>
+            <li><a href="form.html">Đăng nhập/Đăng ký</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
     <div class="alert hide">
       <span class="fas fa-exclamation-circle"></span>
       <span class="msg">Thêm sản phẩm thành công!</span>
