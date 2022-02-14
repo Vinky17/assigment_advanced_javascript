@@ -143,10 +143,12 @@
   font-weight: 900;
   white-space: nowrap;
   border-radius: 50%;
+  width: 13px;
+  height: 13px;
   background-color: rgba(153, 153, 153, 0.9);
   color: #fff;
   position: absolute;
-  right: 40%;
+  right: 41%;
   top: 40px;
   font-size: 10px;
   text-align: center;
@@ -179,6 +181,8 @@
   padding: 15px;
   background: #338dbc;
   color: #fff;
+  outline: none;
+  border: none;
   border-radius: 5px;
 }
 

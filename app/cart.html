@@ -139,7 +139,7 @@
                 <p id="total"></p>
               </div>
               <div class="cart__total__final">
-                <a href="#" class="update-cart">Thanh toán</a>
+                <a class="create-order">Thanh toán</a>
               </div>
             </div>
             <div class="cart_note">
@@ -149,6 +149,34 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+    <div class="overlay">
+      <div class="overlay-header-container">
+        <div class="overlay-header-box">
+          <ul id="menu-sidebar">
+            <li>
+              <form method="post" action="">
+                <div class="search-small">
+                  <input type="text" placeholder="Tìm kiếm..." />
+                  <button>
+                    <ion-icon name="search-outline"></ion-icon>
+                  </button>
+                </div>
+              </form>
+            </li>
+            <li><a href="index.html">Trang chủ</a></li>
+            <li>
+              <a href="product.html">Sản phẩm </a><a id="mobile-dropdown">
+                <ion-icon name="chevron-down-outline"></ion-icon>
+              </a>
+              <ul class="dropdown-responsive">
+              </ul>
+            </li>
+            <li><a href="intro.html">Giới thiệu</a></li>
+            <li><a href="form.html">Đăng nhập/Đăng ký</a></li>
+          </ul>
         </div>
       </div>
     </div>
@@ -162,6 +190,7 @@
   </div>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script src="./Js/cart-api.js"></script>
+  <script src="./Js/categories-api.js"></script>
   <script>
 
     // tính tiền
@@ -233,6 +262,11 @@
         total += parseInt(summary.innerText);
       }
       document.getElementById('total').innerText = total + "vnđ";
+    }
+
+    const paymentButton = document.querySelector('.create-order');
+    paymentButton.onclick = function () {
+      document.location = './shipping.html';
     }
 
   </script>

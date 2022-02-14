@@ -40,20 +40,6 @@
       "category_id": 4
     },
     {
-      "name": "Kayla Skirt",
-      "image": "https://product.hstatic.net/1000370235/product/sbsc105226_18fd0377d9504bc389ee1a7e13038b1b_grande.jpg",
-      "price": "294000",
-      "category_id": 3,
-      "id": 4
-    },
-    {
-      "name": "Evelyn Top",
-      "image": "https://product.hstatic.net/1000370235/product/sbs62613_ad55332bf1da44c09dee0019a57a98ab_grande.jpg",
-      "price": "208000",
-      "category_id": 2,
-      "id": 5
-    },
-    {
       "name": "Monica Dress",
       "image": "https://product.hstatic.net/1000370235/product/facetune_08-01-2022-15-03-11_ae9ccb7a4ca14460917fe9ada515f5db_grande.jpg",
       "price": "590000",
@@ -73,6 +59,27 @@
       "price": "209000",
       "category_id": 3,
       "id": 8
+    },
+    {
+      "name": "Krista Dress",
+      "image": "https://product.hstatic.net/1000370235/product/img_6193_8058b51ba24d4483959bd6610762ce27_grande.jpg",
+      "price": "660000",
+      "category_id": 1,
+      "id": 9
+    },
+    {
+      "name": "Rose Skirt",
+      "image": "https://product.hstatic.net/1000370235/product/15_d8d1762df7c04c45955c9350f955ec52_grande.jpg",
+      "price": "390000",
+      "category_id": 3,
+      "id": 10
+    },
+    {
+      "name": "Black Kyla Jeans",
+      "image": "https://product.hstatic.net/1000370235/product/sbs1976_e731547707d643ec8a85e9bee42ed0ac_grande.jpg",
+      "price": "480000",
+      "category_id": 4,
+      "id": 11
     }
   ],
   "orders": [
@@ -84,6 +91,15 @@
       "customer_phone": "0989788749",
       "create_date": "14-02-2019",
       "status": "shipped"
+    },
+    {
+      "customer_name": "yến",
+      "customer_address": "hà tĩnh",
+      "customer_email": "maiyen257@gmail.com",
+      "customer_phone": "0989788749",
+      "create_date": "2022-02-12",
+      "status": "wait for confirmation",
+      "id": 2
     }
   ],
   "order_detail": [
@@ -93,6 +109,24 @@
       "product_id": 2,
       "quantity": 1,
       "unti_price": 199000
+    },
+    {
+      "order_id": 2,
+      "product_id": 10,
+      "unti_price": 390000,
+      "id": 2
+    },
+    {
+      "order_id": 3,
+      "product_id": 9,
+      "unti_price": 660000,
+      "id": 3
+    },
+    {
+      "order_id": 3,
+      "product_id": 8,
+      "unti_price": 209000,
+      "id": 4
     }
   ]
 }

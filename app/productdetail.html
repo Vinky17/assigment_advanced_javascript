@@ -406,6 +406,7 @@
       alert.classList.remove('show');
       alert.classList.add('hide');
     }
+
     let alert = document.querySelector('.alert');
 
     function addToCart(id, name, image, price) {
@@ -421,12 +422,9 @@
       let cart = JSON.parse(localStorage.getItem('cart'));
       if (cart == null) {
         cart = [];
-        // Thêm value vào mảng cart
         cart.push({ id, name, image, price, quatity: 1 });
       } else {
-        // Tìm id của product mới thêm vào bằng với id api
         let item = cart.find(product => product.id == id);
-        // Nếu tìm ra tăng số lượng lên còn không thì thêm value vào mảng cart
         item ? item.quatity++ : cart.push({ id, name, image, price, quatity: 1 });
       }
       localStorage.setItem('cart', JSON.stringify(cart));

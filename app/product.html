@@ -94,7 +94,7 @@
             <p>Sắp xếp theo:</p>
             <div class="filter-orderby">
               <div class="filter-orderby-item">
-                <p>Sản phẩm nổi bật</p>
+                <p id="filter-text">Sản phẩm nổi bật</p>
                 <p>
                   <a href="#" id="filter-dropdown">
                     <ion-icon name="caret-down-outline"></ion-icon>
@@ -104,14 +104,13 @@
             </div>
             <div class="filter-select">
               <ul>
-                <li>Sản phẩm nổi bật</li>
-                <li>Giá: Tăng dần</li>
-                <li>Giá: Giảm dần</li>
-                <li>Tên: A-Z</li>
-                <li>Tên: Z-A</li>
-                <li>Cũ nhất</li>
-                <li>Mới nhất</li>
-                <li>Bán chạy nhất</li>
+                <li filter-value="manual">Sản phẩm nổi bật</li>
+                <li filter-value="price-ascending">Giá: Tăng dần</li>
+                <li filter-value="price-descending">Giá: Giảm dần</li>
+                <li filter-value="name-ascending">Tên: A-Z</li>
+                <li filter-value="name-descending">Tên: Z-A</li>
+                <li filter-value="created-ascending">Cũ nhất</li>
+                <li filter-value="created-descending">Mới nhất</li>
               </ul>
             </div>
           </div>
@@ -136,24 +135,24 @@
           </div> -->
 
         </div>
-      </div>
-      <!-- Pagniation -->
-      <div class="paging">
-        <ul class="product-pagination">
-          <li>
-            <a href="#" id="pagniation">
-              <ion-icon name="chevron-back-outline"></ion-icon>
-            </a>
-          </li>
-          <li><a href="#" id="pagniation" class="pagniation-active">1</a></li>
-          <li><a href="#" id="pagniation">2</a></li>
-          <li><a href="#" id="pagniation">3</a></li>
-          <li>
-            <a href="#" id="pagniation">
-              <ion-icon name="chevron-forward-outline"></ion-icon>
-            </a>
-          </li>
-        </ul>
+        <!-- Pagniation -->
+        <div class="paging">
+          <ul class="product-pagination">
+            <li onclick="limitPerPage(1,8)">
+              <a class="pagination">
+                <ion-icon name="chevron-back-outline"></ion-icon>
+              </a>
+            </li>
+            <li onclick="limitPerPage(1,8)"><a class="pagination pagination-active">1</a></li>
+            <li onclick="limitPerPage(2,8)"><a class="pagination">2</a></li>
+            <li onclick="limitPerPage(3,8)"><a class="pagination">3</a></li>
+            <li onclick="limitPerPage(1,8)">
+              <a class="pagination">
+                <ion-icon name="chevron-forward-outline"></ion-icon>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
       <!-- Start inbox -->
       <div class="email-contact">
@@ -315,27 +314,234 @@
       </div>
     </div>
   </div>
+  <script src="./Js/product-api.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script src="./Js/categories-api.js"></script>
-  <script src="./Js/product-api.js"></script>
   <script>
-    const filterDropdown = document.getElementById("filter-dropdown");
+    const filterDropdown = document.querySelector(".filter-orderby-item");
     const filterSelect = document.querySelector(".filter-select");
     filterDropdown.addEventListener("click", function () {
       filterSelect.classList.toggle("active");
     });
 
+    function removeFilterActive() {
+      filterSelect.classList.remove("active");
+    }
+
+    let filterText = document.getElementById("filter-text");
+    let filterValue = document.querySelectorAll('li[filter-value]');
+    filterValue.forEach(item => {
+      item.onclick = () => {
+        const options = item.getAttribute('filter-value');
+        switch (options) {
+          case 'manual':
+            filterText.innerText = `Sản phẩm nổi bật`;
+            removeFilterActive();
+            manual();
+            break;
+          case 'price-ascending':
+            filterText.innerText = `Giá: tăng dần`;
+            removeFilterActive();
+            sortPriceAsc();
+            break;
+          case 'price-descending':
+            filterText.innerText = `Giá: giảm dần`;
+            removeFilterActive();
+            sortPriceDesc();
+            break;
+          case 'name-ascending':
+            filterText.innerText = `Tên: A-Z`;
+            removeFilterActive();
+            sortNameAsc();
+            break;
+          case 'name-descending':
+            filterText.innerText = `Tên: Z-A`;
+            removeFilterActive();
+            sortNameDesc();
+            break;
+          case 'created-ascending':
+            filterText.innerText = `Cũ nhất`;
+            removeFilterActive();
+            sortCreatedAsc();
+            break;
+          case 'created-descending':
+            filterText.innerText = `Mới nhất`;
+            removeFilterActive();
+            sortCreatedDesc();
+            break;
+          default:
+            filterText.innerText = `Sản phẩm nổi bật`;
+            break;
+        }
+      }
+    })
+    /////////////////////////////////////////////////////////////////////////////////////
+
+    // Phân trang
+    function limitPerPage(begin, end) {
+      let limitUrl = `http://localhost:3000/products/?_page=${begin}&_limit=${end}`;
+      fetch(limitUrl)
+        .then(res => res.json())
+        .then(products => {
+          renderProducts(products);
+        })
+    }
+
+    const pageItems = document.querySelectorAll('.pagination');
+    pageItems.forEach(pageItem => {
+      pageItem.addEventListener('click', function (e) {
+        const pageItemActive = document.querySelector('.pagination-active');
+
+        pageItemActive.classList.remove('pagination-active');
+        pageItem.classList.add('pagination-active');
+      })
+    })
+
     const productsApi = 'http://localhost:3000/products';
 
-    // Hiển thị trang chi tiết sản phẩm
-    function renderProductDetail(id) {
-      fetch(productsApi + '/' + id)
+    getProducts(renderProducts);
+
+    // API lấy danh sách sản phẩm
+    function getProducts(products) {
+      fetch(productsApi + '/?_page=1&_limit=8')
         .then(res => res.json())
-        .then(item => {
-          let productDetail = localStorage.setItem('productDetail', JSON.stringify(item));
-          window.location = 'productdetail.html';
+        .then(products)
+    }
+
+    // Hiển thị danh sách sản phẩm
+    const productBlock = document.querySelector('.product-list-row');
+    function renderProducts(products) {
+
+      const productItem = products.map((product) => {
+        return `
+    <div class="product-item">
+    <div class="image">
+      <a onclick="renderProductDetail(${product.id})"><img src="${product.image}" alt="" /></a>
+    </div>
+    <div class="products-action">
+      <h2><a href="${product.id}">${product.name}</a></h2>
+      <div class="product-price">
+        <p>${product.price}₫</p>
+      </div>
+      <span onclick="addToCart(${product.id},'${product.name}','${product.image}',${product.price})" class="product-buy-btn">
+      Mua ngay
+      </span>
+    </div>
+  </div> `;
+      })
+      productBlock.innerHTML = productItem.join('');
+
+    }
+
+    // Tìm kiếm sản phẩm
+    const searchButton = document.querySelector('.search-icon');
+
+    searchButton.onclick = () => {
+      let searchInputValue = document.querySelector('#search-input').value;
+      let searchProductApi = `http://localhost:3000/products?q=${searchInputValue}`;
+
+      renderSearchProduct(searchProductApi);
+    }
+
+    window.addEventListener('keydown', (event) => {
+      if (event.code === 'Enter') {
+        let searchInputValue = document.querySelector('#search-input').value;
+        let searchProductApi = `http://localhost:3000/products?q=${searchInputValue}`;
+
+        renderSearchProduct(searchProductApi);
+      }
+    });
+
+    function renderSearchProduct(searchProductApi) {
+      fetch(searchProductApi)
+        .then(res => res.json())
+        .then((products) => {
+          if (products.length == 0) {
+            productBlock.innerHTML = `<h1>Không tìm thấy sản phẩm</h1>`;
+          } else {
+            renderProducts(products);
+          }
+
         })
-    };
+    }
+
+    // Hiển thị sản phẩm theo loại
+    let params = new URLSearchParams(location.search);
+    let id = params.get('id');
+    let productByIdApi = `http://localhost:3000/products?category_id=${id}`;
+    function renderProductsById() {
+      fetch(productByIdApi)
+        .then(res => res.json())
+        .then((products) => {
+          if (id == null) getProducts(renderProducts);
+          renderProducts(products);
+        })
+    }
+    renderProductsById();
+
+    // Sắp xếp sản phẩm nổi bật
+    function manual() {
+      fetch('http://localhost:3000/products')
+        .then(res => res.json())
+        .then((products) => {
+          renderProducts(products);
+        })
+    }
+
+    // Sắp xếp tăng dần theo giá
+    function sortPriceAsc() {
+      fetch('http://localhost:3000/products?_sort=price&_order=asc')
+        .then(res => res.json())
+        .then((products) => {
+          renderProducts(products);
+        })
+    }
+
+    // Sắp xếp giảm dần theo giá
+    function sortPriceDesc() {
+      fetch('http://localhost:3000/products?_sort=price&_order=desc')
+        .then(res => res.json())
+        .then((products) => {
+          renderProducts(products);
+        })
+    }
+
+    // Sắp xếp tên từ A-Z
+    function sortNameAsc() {
+      fetch('http://localhost:3000/products?_sort=name&_order=asc')
+        .then(res => res.json())
+        .then((products) => {
+          renderProducts(products);
+        })
+    }
+
+    // Sắp xếp tên từ Z-A
+    function sortNameDesc() {
+      fetch('http://localhost:3000/products?_sort=name&_order=desc')
+        .then(res => res.json())
+        .then((products) => {
+          renderProducts(products);
+        })
+    }
+
+    // Sắp xếp cũ nhất
+    function sortCreatedAsc() {
+      fetch('http://localhost:3000/products?_sort=id&_order=asc')
+        .then(res => res.json())
+        .then((products) => {
+          renderProducts(products);
+        })
+    }
+
+    // Sắp xếp mới nhất
+    function sortCreatedDesc() {
+      fetch('http://localhost:3000/products?_sort=id&_order=desc')
+        .then(res => res.json())
+        .then((products) => {
+          renderProducts(products);
+        })
+    }
+
 
     // Thêm sản phẩm vào giỏ hàng
     document.querySelector('.close-btn').onclick = () => {
@@ -357,19 +563,24 @@
       let cart = JSON.parse(localStorage.getItem('cart'));
       if (cart == null) {
         cart = [];
-        // Thêm value vào mảng cart
         cart.push({ id, name, image, price, quatity: 1 });
       } else {
-        // Tìm id của product mới thêm vào bằng với id api
         let item = cart.find(product => product.id == id);
-        // Nếu tìm ra tăng số lượng lên còn không thì thêm value vào mảng cart
         item ? item.quatity++ : cart.push({ id, name, image, price, quatity: 1 });
       }
       localStorage.setItem('cart', JSON.stringify(cart));
     }
 
+    // Hiển thị trang chi tiết sản phẩm
+    function renderProductDetail(id) {
+      fetch('http://localhost:3000/products' + '/' + id)
+        .then(res => res.json())
+        .then(item => {
+          let productDetail = localStorage.setItem('productDetail', JSON.stringify(item));
+          window.location = 'productdetail.html';
+        })
+    };
   </script>
-
 </body>
 
 </html>
