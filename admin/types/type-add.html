@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8">
   <!--<title> Responsive Sidebar Menu  | CodingLab </title>-->
-  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="../css/style.css">
   <!-- Boxicons CDN Link -->
   <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,21 +25,21 @@
         <span class="tooltip">Search</span>
       </li>
       <li>
-        <a href="list.html">
+        <a href="../list.html">
           <i class='bx bxs-home'></i>
           <span class="links_name">Home</span>
         </a>
         <span class="tooltip">Home</span>
       </li>
       <li>
-        <a href="list.html">
+        <a href="../list.html">
           <i class='bx bxl-product-hunt'></i>
           <span class="links_name">Products</span>
         </a>
         <span class="tooltip">Products</span>
       </li>
       <li>
-        <a href="./types/type-list.html">
+        <a href="./type-list.html">
           <i class='bx bx-menu'></i>
           <span class="links_name">Types</span>
         </a>
@@ -95,45 +95,57 @@
             <div class="job">Web designer</div>
           </div>
         </div>
-        <a href="/app/index.html"><i class='bx bx-log-out' id="log_out"></i></a>
-        </i>
+        <i class='bx bx-log-out' id="log_out"></i>
       </li>
     </ul>
   </div>
   <section class="home-section">
-    <div class="text">Danh sách sản phẩm</div>
+    <!-- <div class="text">Danh sách sản phẩm</div> -->
     <div class="wrapper">
-      <header>Thêm sản phẩm</header>
+      <header>Thêm loại sản phẩm</header>
       <div class="form">
         <div class="dbl-field">
           <div class="field">
-            <input type="text" name="name" placeholder="Tên sản phẩm">
+            <input type="text" name="typeName" placeholder="Tên loại">
             <i class='fas fa-user'></i>
-          </div>
-          <div class="field">
-            <input type="text" name="image" placeholder="Hình ảnh sản phẩm">
-            <i class='fas fa-envelope'></i>
-          </div>
-        </div>
-        <div class="dbl-field">
-          <div class="field">
-            <input type="text" name="price" placeholder="Giá sản phẩm">
-            <i class='fas fa-phone-alt'></i>
-          </div>
-          <div class="field">
-            <select id="category_id" name="category_id">
-            </select>
           </div>
         </div>
         <div class="button-area">
-          <button id="createProduct">Thêm sản phẩm</button>
+          <button id="createProduct">Thêm mới</button>
         </div>
       </div>
     </div>
   </section>
-  <script src="./js/category.js"></script>
-  <script src="./js/add.js"></script>
   <script>
+    const typeApi = 'http://localhost:3000/categoies';
+    function handleCreateTypeProduct() {
+      const createBtn = document.getElementById('createProduct');
+
+      createBtn.onclick = function () {
+        const nameValue = document.querySelector('input[name="typeName"]').value;
+
+        const formData = { name: nameValue };
+
+        createProduct(formData);
+        alert('Thêm loại sản phẩm thành công');
+      }
+    }
+
+    function createProduct(data, products) {
+      fetch(typeApi, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+        .then(res => res.json())
+        .then(products)
+    }
+
+    handleCreateTypeProduct();
+
+
     let sidebar = document.querySelector(".sidebar");
     let closeBtn = document.querySelector("#btn");
     let searchBtn = document.querySelector(".bx-search");

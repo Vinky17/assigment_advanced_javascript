@@ -23,6 +23,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 <p>${item.name}</p>
                 <p>S</p>
               </td>
+              <td>
+              <p>Số lượng</p>
+              <p>${item.quatity}</p>
+              </td>
               <td>${item.price} vnđ</td>
             </tr>
           </thead>

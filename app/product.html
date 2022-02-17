@@ -138,19 +138,19 @@
         <!-- Pagniation -->
         <div class="paging">
           <ul class="product-pagination">
-            <li onclick="limitPerPage(1,8)">
+            <!-- <li onclick="limitPerPage(1,8)">
               <a class="pagination">
                 <ion-icon name="chevron-back-outline"></ion-icon>
               </a>
-            </li>
+            </li> -->
             <li onclick="limitPerPage(1,8)"><a class="pagination pagination-active">1</a></li>
             <li onclick="limitPerPage(2,8)"><a class="pagination">2</a></li>
             <li onclick="limitPerPage(3,8)"><a class="pagination">3</a></li>
-            <li onclick="limitPerPage(1,8)">
+            <!-- <li onclick="limitPerPage(1,8)">
               <a class="pagination">
                 <ion-icon name="chevron-forward-outline"></ion-icon>
               </a>
-            </li>
+            </li> -->
           </ul>
         </div>
       </div>
@@ -375,6 +375,69 @@
         }
       }
     })
+
+    // Sắp xếp sản phẩm nổi bật
+    function manual() {
+      fetch('http://localhost:3000/products')
+        .then(res => res.json())
+        .then((products) => {
+          renderProducts(products);
+        })
+    }
+
+    // Sắp xếp tăng dần theo giá
+    function sortPriceAsc() {
+      fetch('http://localhost:3000/products?_sort=price&_order=asc')
+        .then(res => res.json())
+        .then((products) => {
+          renderProducts(products);
+        })
+    }
+
+    // Sắp xếp giảm dần theo giá
+    function sortPriceDesc() {
+      fetch('http://localhost:3000/products?_sort=price&_order=desc')
+        .then(res => res.json())
+        .then((products) => {
+          renderProducts(products);
+        })
+    }
+
+    // Sắp xếp tên từ A-Z
+    function sortNameAsc() {
+      fetch('http://localhost:3000/products?_sort=name&_order=asc')
+        .then(res => res.json())
+        .then((products) => {
+          renderProducts(products);
+        })
+    }
+
+    // Sắp xếp tên từ Z-A
+    function sortNameDesc() {
+      fetch('http://localhost:3000/products?_sort=name&_order=desc')
+        .then(res => res.json())
+        .then((products) => {
+          renderProducts(products);
+        })
+    }
+
+    // Sắp xếp cũ nhất
+    function sortCreatedAsc() {
+      fetch('http://localhost:3000/products?_sort=id&_order=asc')
+        .then(res => res.json())
+        .then((products) => {
+          renderProducts(products);
+        })
+    }
+
+    // Sắp xếp mới nhất
+    function sortCreatedDesc() {
+      fetch('http://localhost:3000/products?_sort=id&_order=desc')
+        .then(res => res.json())
+        .then((products) => {
+          renderProducts(products);
+        })
+    }
     /////////////////////////////////////////////////////////////////////////////////////
 
     // Phân trang
@@ -383,7 +446,11 @@
       fetch(limitUrl)
         .then(res => res.json())
         .then(products => {
-          renderProducts(products);
+          if (products.length == 0) {
+            productBlock.innerHTML = `<h1>Không tìm thấy sản phẩm</h1>`;
+          } else {
+            renderProducts(products);
+          }
         })
     }
 
@@ -478,70 +545,6 @@
         })
     }
     renderProductsById();
-
-    // Sắp xếp sản phẩm nổi bật
-    function manual() {
-      fetch('http://localhost:3000/products')
-        .then(res => res.json())
-        .then((products) => {
-          renderProducts(products);
-        })
-    }
-
-    // Sắp xếp tăng dần theo giá
-    function sortPriceAsc() {
-      fetch('http://localhost:3000/products?_sort=price&_order=asc')
-        .then(res => res.json())
-        .then((products) => {
-          renderProducts(products);
-        })
-    }
-
-    // Sắp xếp giảm dần theo giá
-    function sortPriceDesc() {
-      fetch('http://localhost:3000/products?_sort=price&_order=desc')
-        .then(res => res.json())
-        .then((products) => {
-          renderProducts(products);
-        })
-    }
-
-    // Sắp xếp tên từ A-Z
-    function sortNameAsc() {
-      fetch('http://localhost:3000/products?_sort=name&_order=asc')
-        .then(res => res.json())
-        .then((products) => {
-          renderProducts(products);
-        })
-    }
-
-    // Sắp xếp tên từ Z-A
-    function sortNameDesc() {
-      fetch('http://localhost:3000/products?_sort=name&_order=desc')
-        .then(res => res.json())
-        .then((products) => {
-          renderProducts(products);
-        })
-    }
-
-    // Sắp xếp cũ nhất
-    function sortCreatedAsc() {
-      fetch('http://localhost:3000/products?_sort=id&_order=asc')
-        .then(res => res.json())
-        .then((products) => {
-          renderProducts(products);
-        })
-    }
-
-    // Sắp xếp mới nhất
-    function sortCreatedDesc() {
-      fetch('http://localhost:3000/products?_sort=id&_order=desc')
-        .then(res => res.json())
-        .then((products) => {
-          renderProducts(products);
-        })
-    }
-
 
     // Thêm sản phẩm vào giỏ hàng
     document.querySelector('.close-btn').onclick = () => {

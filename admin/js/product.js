@@ -4,27 +4,29 @@ function renderProducts() {
   fetch(productApi)
     .then(res => res.json())
     .then(products => {
-      const productListsBlock = document.querySelector(".product-list-item2");
+      const productListsBlock = document.querySelector("#listProduct");
 
       const productListsItem = products.map((product => {
         return `
-            <td class="product-list-item-img">
-          <img src="${product.image}" alt="">
-        </td>
-        <td class="product-list-item-name">
-          ${product.name}
-        </td>
-        <td class="product-list-item-price">
-          ${product.price}
-        </td>
-        <td class="product-list-item-category">
-          ${product.category_id}
-        </td>
-        <td class="product-list-action">
-          <a href="add.html">Thêm</a>
-          <a href="update.html?id=${product.id}">Sửa</a>
-          <strong onclick="handleDeleteProduct(${product.id})">Xóa</strong>
-        </td> `;
+           <tr>
+           <td>${product.id}</td>
+           <td class="product-list-item-img">
+           <img src="${product.image}" alt="">
+         </td>
+         <td class="product-list-item-name">
+           ${product.name}
+         </td>
+         <td class="product-list-item-price">
+           ${product.price}
+         </td>
+         <td class="product-list-item-category">
+           ${product.category_id}
+         </td>
+         <td class="product-list-action">
+           <a href="update.html?id=${product.id}">Sửa</a>
+           <strong onclick="handleDeleteProduct(${product.id})">Xóa</strong>
+         </td>
+         </tr> `;
       }))
       productListsBlock.innerHTML = productListsItem.join('');
     })

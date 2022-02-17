@@ -9,6 +9,17 @@
   <!-- Boxicons CDN Link -->
   <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -39,11 +50,11 @@
         <span class="tooltip">Products</span>
       </li>
       <li>
-        <a href="#">
-          <i class='bx bx-user'></i>
-          <span class="links_name">User</span>
+        <a href="./types/type-list.html">
+          <i class='bx bx-menu'></i>
+          <span class="links_name">Types</span>
         </a>
-        <span class="tooltip">User</span>
+        <span class="tooltip">Types</span>
       </li>
       <li>
         <a href="index.html">
@@ -102,34 +113,22 @@
   </div>
   <section class="home-section">
     <div class="text">Danh sách sản phẩm</div>
-    <table class="product-list">
-      <tr class="product-list-item1">
-        <td>Ảnh</td>
-        <td>Tên</td>
-        <td>Giá</td>
-        <td>Loại sản phẩm</td>
-        <td></td>
-      </tr>
-      <tr class="product-list-item2">
-        <!-- <td class="product-list-item-img">
-          <img src="../app/Img/model2.png" alt="">
-        </td>
-        <td class="product-list-item-name">
-          Evelyn top
-        </td>
-        <td class="product-list-item-price">
-          250000
-        </td>
-        <td class="product-list-item-category">
-          Váy
-        </td>
-        <td class="product-list-action">
-          <a href="index.html">Thêm</a>
-          <a href="">Xóa</a>
-          <a href="">Sửa</a>
-        </td> -->
-      </tr>
-    </table>
+    <main class="container">
+      <a href="add.html" class="btn btn-success mt-2 mb-2">Thêm sản phẩm mới</a>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>Ảnh</th>
+            <th>Tên sản phẩm</th>
+            <th>Giá</th>
+            <th>Loại</th>
+          </tr>
+        </thead>
+        <tbody id="listProduct">
+
+        </tbody>
+    </main>
   </section>
   <script src="./js/product.js"></script>
   <script>

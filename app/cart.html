@@ -233,6 +233,12 @@
 
       quatityValue[index].value++;
 
+      cart.forEach(item => {
+        item.quatity++;
+
+        localStorage.setItem('cart', JSON.stringify(cart));
+      })
+
       let newPrice = price * quatityValue[index].value;
 
       document.getElementsByClassName('summary')[index].innerHTML = newPrice + "vnđ";
@@ -245,6 +251,12 @@
       let quatityValue = document.querySelectorAll('#product-quatity');
 
       quatityValue[index].value--;
+
+      cart.forEach(item => {
+        item.quatity--;
+
+        localStorage.setItem('cart', JSON.stringify(cart));
+      })
 
       let newPrice = price * quatityValue[index].value;
 
