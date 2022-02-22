@@ -258,6 +258,10 @@
 
       let newPrice = price * quatityValue[index].value;
 
+      if (newPrice <= 0) cart.splice(index, 1);
+      console.log(index);
+      console.log(newPrice);
+
       document.getElementsByClassName('summary')[index].innerHTML = newPrice + "vnđ";
 
       total();
