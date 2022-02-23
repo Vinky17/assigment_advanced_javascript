@@ -12,6 +12,11 @@
   <link rel="stylesheet" href="./Css/style.css" />
   <link rel="stylesheet" href="./Css/form.css" />
   <link rel="stylesheet" href="./Css/responsive-form.css" />
+  <style>
+    .form--message {
+      color: rgb(172, 16, 16);
+    }
+  </style>
 </head>
 
 <body>
@@ -96,12 +101,14 @@
                 <h4>Đăng nhập</h4>
               </div>
               <div class="form-control">
-                <input type="text" placeholder="Tài khoản của bạn " />
+                <input type="text" name="username-account" class="username-login" placeholder="Tài khoản của bạn " />
+                <div class="form--message"></div>
               </div>
               <div class="form-control">
-                <input type="password" placeholder="Mật khẩu " />
+                <input type="password" name="password-account" class="password-login" placeholder="Mật khẩu " />
+                <div class="form--message"></div>
               </div>
-              <button class="btnLogin">Đăng nhập</button>
+              <button type="button" class="btnLogin">Đăng nhập</button>
               <p class="forgot"><a href="">Quên mật khẩu ?</a></p>
             </form>
           </div>
@@ -112,18 +119,23 @@
                 <h4>Đăng Ký</h4>
               </div>
               <div class="form-control">
-                <input type="text" placeholder="Nhập tài khoản " />
+                <input type="text" name="username-account" class="username-signup" placeholder="Nhập tài khoản " />
+                <div class="form--message"></div>
               </div>
               <div class="form-control">
-                <input type="text" placeholder="Nhập email " />
+                <input type="text" name="email-signup" class="email-signup" placeholder="Nhập email " />
+                <div class="form--message"></div>
               </div>
               <div class="form-control">
-                <input type="password" placeholder="Nhập mật khẩu " />
+                <input type="password" name="password-account" class="password-signup" placeholder="Nhập mật khẩu " />
+                <div class="form--message"></div>
               </div>
               <div class="form-control">
-                <input type="password" placeholder="Nhập lại mật khẩu " />
+                <input type="password" name="re-password-signup" class="re-password-signup"
+                  placeholder="Nhập lại mật khẩu " />
+                <div class="form--message"></div>
               </div>
-              <button class="btnReg">Đăng ký</button>
+              <button type="button" class="btnReg">Đăng ký</button>
             </form>
           </div>
         </div>
@@ -142,7 +154,7 @@
             <p>Nhập địa chỉ email của bạn để nhận được tin tức mới nhất</p>
             <form method="post">
               <input type="text" placeholder="Nhập email của bạn..." />
-              <button class="btn btn-reg" type="submit">Đăng ký</button>
+              <button class="btn btn-reg" type="button" type="submit">Đăng ký</button>
             </form>
           </div>
         </div>
@@ -286,6 +298,76 @@
   <link rel="stylesheet" href="./Js/js.js">
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script>
+    // Form validation
+    const inputAccountList = document.querySelectorAll('input[name="username-account"]');
+    inputAccountList.forEach(input => {
+      input.addEventListener("input", (e) => {
+        let notification = input.parentElement.querySelector(".form--message");
+
+        // kiểm tra giá trị
+        if (input.value === "") {
+          notification.innerHTML = '* Vui lòng nhập tài khoản của bạn!';
+
+        } else if (/^\s/.test(input.value)) {
+          notification.innerHTML = '* Tài khoản không được bắt đầu bằng dấu cách!';
+
+        } else {
+          notification.innerHTML = '';
+        }
+      })
+    });
+
+    const inputPasswordList = document.querySelectorAll('input[name="password-account"]');
+    inputPasswordList.forEach(input => {
+      input.addEventListener("input", (e) => {
+        let notification = input.parentElement.querySelector(".form--message");
+
+        if (input.value === "") {
+          notification.innerHTML = '* Vui lòng nhập mật khẩu của bạn!';
+
+        } else if (input.value.length < 4 || input.value.length > 32) {
+          notification.innerHTML = '* Vui lòng nhập mật khẩu từ 4 đến 32 ký tự!'
+
+        } else if (/[^0-9a-zA-Z]/.test(input.value)) {
+          notification.innerHTML = "* Mật khẩu chỉ bao gồm chữ cái không dấu!";
+
+        } else {
+          notification.innerHTML = '';
+
+        }
+      })
+    });
+
+    // Form-action
+    const accountApi = 'http://localhost:3000/account';
+    const usernameSignUp = document.querySelector('.username-signup');
+    const emailSignUp = document.querySelector('.email-signup');
+    const passwordSignUp = document.querySelector('.password-signup');
+
+    const btnReg = document.querySelector('.btnReg');
+
+    btnReg.addEventListener('click', function (e) {
+
+      const formData = {
+        username: usernameSignUp.value,
+        password: passwordSignUp.value,
+        email: emailSignUp.value
+      }
+
+      console.log(formData);
+
+      fetch(accountApi, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      }).then(res => res.json())
+
+      alert('Đăng ký thành công!');
+    })
+  </script>
 </body>
 
 </html>

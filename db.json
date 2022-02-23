@@ -128,5 +128,19 @@
       "unti_price": 209000,
       "id": 4
     }
+  ],
+  "account": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "20201320",
+      "email": "admin@gmail.com"
+    },
+    {
+      "username": "holland",
+      "password": "6969",
+      "email": "holland@kyle.com",
+      "id": 2
+    }
   ]
 }
