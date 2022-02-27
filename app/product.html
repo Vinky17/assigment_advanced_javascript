@@ -440,6 +440,10 @@
     }
     /////////////////////////////////////////////////////////////////////////////////////
 
+    function vnd(price) {
+      return String(price).replace(/(.)(?=(\d{3})+$)/g, "$1.") + " VNĐ";
+    }
+
     // Phân trang
     function limitPerPage(begin, end) {
       let limitUrl = `http://localhost:3000/products/?_page=${begin}&_limit=${end}`;
@@ -481,20 +485,20 @@
 
       const productItem = products.map((product) => {
         return `
-  <div class="product-item">
-    <div class="image">
-      <a onclick="renderProductDetail(${product.id})"><img src="${product.image}" alt="" /></a>
-    </div>
-    <div class="products-action">
-      <h2><a href="${product.id}">${product.name}</a></h2>
-      <div class="product-price">
-        <p>${product.price}₫</p>
-      </div>
-      <span onclick="addToCart(${product.id},'${product.name}','${product.image}',${product.price})" class="product-buy-btn">
-      Mua ngay 
-      </span>
-    </div>
- </div> `;
+            <div class="product-item">
+              <div class="image">
+                <a onclick="renderProductDetail(${product.id})"><img src="${product.image}" alt="" /></a>
+              </div>
+              <div class="products-action">
+                <h2><a href="${product.id}">${product.name}</a></h2>
+                <div class="product-price">
+                  <p>${vnd(product.price)}</p>
+                </div>
+                <span onclick="addToCart(${product.id},'${product.name}','${product.image}',${product.price})" class="product-buy-btn">
+                Mua ngay 
+                </span>
+              </div>
+          </div> `;
       })
       productBlock.innerHTML = productItem.join('');
 

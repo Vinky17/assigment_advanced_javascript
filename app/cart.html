@@ -193,6 +193,9 @@
   <script src="./Js/categories-api.js"></script>
   <script>
 
+    function vnd(price) {
+      return String(price).replace(/(.)(?=(\d{3})+$)/g, "$1.") + " VNĐ";
+    }
     // tính tiền
     function reBill(price, quatity, index) {
       let newPrice = price * quatity;
@@ -240,7 +243,7 @@
 
       let newPrice = price * quatityValue[index].value;
 
-      document.getElementsByClassName('summary')[index].innerHTML = newPrice + "vnđ";
+      document.getElementsByClassName('summary')[index].innerHTML = vnd(newPrice);
       total();
 
     }
@@ -250,6 +253,7 @@
       let quatityValue = document.querySelectorAll('#product-quatity');
 
       quatityValue[index].value--;
+      // if (quatityValue[index].value < 1) quatityValue[index].value = 1;
 
       cart.forEach(item => {
         item.quatity--;
@@ -258,11 +262,7 @@
 
       let newPrice = price * quatityValue[index].value;
 
-      if (newPrice <= 0) cart.splice(index, 1);
-      console.log(index);
-      console.log(newPrice);
-
-      document.getElementsByClassName('summary')[index].innerHTML = newPrice + "vnđ";
+      document.getElementsByClassName('summary')[index].innerHTML = vnd(newPrice);
 
       total();
     }
